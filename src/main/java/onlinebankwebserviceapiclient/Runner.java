@@ -2,6 +2,7 @@ package onlinebankwebserviceapiclient;
 
 import com.mycompany.onlinebankwebserviceapi.model.Customer;
 import com.mycompany.onlinebankwebserviceapi.model.Transaction;
+import java.util.ArrayList;
 
 public class Runner {
     public static void main(String[] args) {
@@ -9,7 +10,12 @@ public class Runner {
 //        PostCustomer pc = new PostCustomer();
 //        System.out.println(pc.postCustomer());
         GETRequestes cm = new GETRequestes();
-        cm.getAllCustomers();
+        //thats how to get array list from list
+        ArrayList<Customer> customers = new ArrayList(cm.getAllCustomers());
+        for(Customer c: customers){
+            System.out.println(c.getLogin());
+        }
+        
         cm.getCustomerByID("bob1");
         cm.getAllAccountsForCustomer("bob1");
         cm.getAccountsDetails(100000001);
